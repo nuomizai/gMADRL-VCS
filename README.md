@@ -49,7 +49,7 @@ python plot.py
 
 
 ## Checkpoints
-Download the checkpoints from [Google Drive](https://drive.google.com/drive/folders/158856666666666666666666666666666?usp=sharing) and find all the results here.
+Download the checkpoints from [Google Drive](https://drive.google.com/drive/folders/1ZWa_cj3VKJz73xOsRT8ePsRaPXqaAyo6?usp=sharing) and find all the results here.
 
 
 ## Acknowledgement
