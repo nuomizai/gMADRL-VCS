@@ -1,6 +1,3 @@
-[![NVIDIA Source Code License](https://img.shields.io/badge/license-NSCL-blue.svg)](https://github.com/NVlabs/SegFormer/blob/master/LICENSE)
-![Python 3.8](https://img.shields.io/badge/python-3.8-green.svg)
-
 # Energy-Efficient Ground-Air-Space Vehicular Crowdsensing by Hierarchical Multi-Agent Deep Reinforcement Learning with Diffusion Models
 
 <!-- ![image](resources/image.png) -->
@@ -49,7 +46,7 @@ python plot.py
 
 
 ## Checkpoints
-Download the checkpoints from [Google Drive](https://drive.google.com/drive/folders/1ZWa_cj3VKJz73xOsRT8ePsRaPXqaAyo6?usp=sharing) and find all the results here.
+Download the checkpoints from [Google Drive](https://drive.google.com/drive/folders/1dKyo0HpZyf4JKVWEgO-gmo8xFuTtP6mh?usp=sharing) and find all the results here.
 
 
 ## Acknowledgement
