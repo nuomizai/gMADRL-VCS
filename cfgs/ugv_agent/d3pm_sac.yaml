@@ -1,0 +1,23 @@
+defaults:
+  - _self_
+
+
+ugv_agent:
+  _target_: methods.d3pm_sac.D3PMSAC
+  ugv_net_cfg:
+    state_dim: ???
+    action_dim: ???
+    hidden_dim: 128
+  actor_cfg:
+    state_dim: ???
+    action_dim: ???
+    hidden_dim: 128
+    model_output: logits
+    use_res: false
+  actor_lr: 1e-4
+  wd: 1e-4
+  critic_target_tau: 0.005
+  critic_lr: 1e-3
+  num_timesteps: 5
+  alpha: 0.05
+  gamma: 0.90

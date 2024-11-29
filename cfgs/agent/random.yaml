@@ -1,0 +1,7 @@
+defaults:
+  - _self_
+
+#agent_name: svea
+
+agent:
+  _target_: agents.rand_agent.RandAgent

@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+
+#agent_name: svea
+
+agent:
+  _target_: agents.human_agent.HumanAgent
+  coordx_max: ${coordx_max}
+  coordy_max: ${coordy_max}
+  max_move_dist: ${..env_cfg.max_move_dist}
+

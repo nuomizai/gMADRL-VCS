@@ -1,0 +1,17 @@
+defaults:
+  - _self_
+
+dataset_name: ROMA
+dataset_path: ../../../../datasets/ROMA/
+stop_poi_max_dis: 250
+diff_gamma: 0.90
+coordx_max: 2122.7406111728965
+coordy_max: 1712.5558378705596
+zone_id: 33
+ball_id: 'N'
+coordx_per_lon: 82764
+coordy_per_lat: 111195
+lon_min: 12.453368681005534
+lon_max: 12.479016796263048
+lat_min: 41.92607544691935
+lat_max: 41.941476821422434

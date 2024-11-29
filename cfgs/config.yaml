@@ -1,0 +1,131 @@
+defaults:
+  - _self_
+  - dataset@_global_: ROMA
+  - agent@_global_: ppo
+  - ugv_agent@_global_: d3pm_sac
+
+
+
+model_path: model
+device: 0
+gpu_id: 0
+mode: train
+seed: 0
+critic_target_tau: 0.005
+discount: 0.99
+
+
+
+batch_size: 128
+ugv_batch_size: 64
+max_step_num: 100
+update_times: 10
+
+ugv_n: 4
+uav_n: 4
+
+hidden_size: 256
+train_iter: 8000
+goal_schedule: 'linear(0.5,0.01,8000)'
+ugv_move_norm: 10
+beta_schedule: cosine
+n_timesteps: 5
+actor_lr: 1e-4
+critic_lr: 1e-3
+wd: 1e-4
+alpha: 0.05
+lr_decay: false
+n_step: 5
+model_output: 'logits'
+use_res: false
+load_trace_episode: -1
+lr: 2.5e-4     # 2.5e-4
+eps: 1e-5
+decay_rate: 0.9995
+
+rollout_cfg:
+  gamma: 0.9
+  tau: 0.95
+  use_gae: true
+  device: ${device}
+  uav_n: ${uav_n}
+  mini_batch_size: 400
+
+
+replay_buffer_cfg:
+  state_dim: ???
+  device_id: ${device}
+  capacity: 100000
+  batch_size: 64
+  ugv_n: ${ugv_n}
+
+
+env_cfg:
+  uav_n: ${uav_n}
+  ugv_n: ${ugv_n}
+  mode: ${mode}
+  stop_poi_max_dis: ${stop_poi_max_dis}
+  collect_speed_poi: 3.5
+  global_horizon: 400
+  ego_horizon: 40
+  poi_value_min: 8
+  poi_value_max: 12
+  grid_size: 1000
+  uav_move_check_hit_gap: 2
+  uav_sensing_range: 60
+  stop_gap: 100
+  uav_init_energy: 12.0
+  max_move_dist: 50.0
+  move_energy_ratio: 0.01
+  hover_energy: 0.05
+  dataset_path: ${dataset_path}
+  coordx_max: ${coordx_max}
+  coordy_max: ${coordy_max}
+  ugv_move_norm: 10
+  norm_her_reward: 0.5
+  max_step_num: ${max_step_num}
+
+log_conf:
+  coordx_max: ${coordx_max}
+  coordy_max: ${coordy_max}
+  dataset_path: ${dataset_path}
+  zone_id: ${zone_id}
+  ball_id: ${ball_id}
+  lon_min: ${lon_min}
+  lat_min: ${lat_min}
+  coordx_per_lon: ${coordx_per_lon}
+  coordy_per_lat: ${coordy_per_lat}
+  max_move_dist: ${..env_cfg.max_move_dist}
+  move_energy_ratio: ${..env_cfg.move_energy_ratio}
+  uav_sensing_range: ${..env_cfg.uav_sensing_range}
+  poi_value_max: ${..env_cfg.poi_value_max}
+  uav_n: ${uav_n}
+  ugv_n: ${ugv_n}
+  ugv_step_interval: ${ugv_step_interval}
+  max_step_num: ${max_step_num}
+  poi_num: ???
+
+
+
+uav_loc_obs_channel_num: 4
+ugv_step_interval: 10
+
+
+
+use_grad_norm: false
+
+hydra:
+  run:
+    dir: ./exp_local/${now:%Y.%m.%d}/${hydra.job.override_dirname}/${seed}
+  sweep:
+    dir: ./exp_local
+    subdir: ${now:%Y.%m.%d}/${hydra.job.override_dirname}/${seed}
+  job:
+    config:
+      override_dirname:
+        exclude_keys:
+          - load_trace_episode
+          - seed
+          - device
+          - update_ugv
+          - pretrained_model_path
